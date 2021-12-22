@@ -3,17 +3,20 @@
   become: yes
   tasks:
   - name: i want to execute linux commnd directly
-    command: hostname -f
+    command: hostname 
     register: myresult
-  - name: i went to debug
+  - name: i want to disply myresult
     debug:
        msg: "{{myresult}}" 
-  - name: install git
+  - name: i want to install git
     apt:
       name: git
       state: present
     when: myresult.stderr=="" 
-  - name: install tree
+
+  - name: i want to install tree
+    apt:
+      name:
     state: present
     when: myresult.stderr !=""           
     
